@@ -31,6 +31,30 @@ public class MealDeal extends Campaign {
 
     @Override
     public int calculateDiscount(Map<String, Integer> cart) {
-        return 0;
+
+        int res = 0;
+
+        // all items defined in the campaign must be in the cart
+        while(containsAll(cart)) {
+
+            res += this.price;
+            //remove one item from each sku and continue processing if there are more items
+            for (String s : this.skus) {
+                cart.put(s, cart.get(s) - 1);
+            }
+        }
+
+
+        return res;
+    }
+
+    private boolean containsAll(Map<String, Integer> cart) {
+
+        for(String sku : this.skus) {
+            if(cart.get(sku) < 1)
+                return false;
+        }
+
+        return true;
     }
 }

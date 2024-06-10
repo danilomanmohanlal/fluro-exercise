@@ -13,7 +13,7 @@ public class Main {
         Main m = new Main();
 
         int total = 0;
-        String[] cart = new String[]{"A","B","C","D","E","B", "B", "B", "B", "C", "C", "C", "C"};
+        String[] cart = new String[]{"A","B","C","D","E","B", "B", "B", "B", "C", "C", "C", "C", "D"};
 
         Map<String, Integer> cartMap = new HashMap<>();
         Map<String, Campaign> activeCampaigns = m.getCampaigns();
@@ -74,10 +74,12 @@ public class Main {
 
         Multipriced multipriced = new Multipriced("B", 2, 125);
         BuyNGet1 buyNGet1 = new BuyNGet1("C", 3);
+        MealDeal mealDeal = new MealDeal(new String[]{"D", "E"}, 300);
 
 
         res.put("B", multipriced);
         res.put("C", buyNGet1);
+        res.put("D", mealDeal);
 
         return res;
     }
