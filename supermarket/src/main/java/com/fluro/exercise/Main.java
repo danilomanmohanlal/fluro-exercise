@@ -5,9 +5,7 @@ import com.fluro.exercise.campaigns.Campaign;
 import com.fluro.exercise.campaigns.MealDeal;
 import com.fluro.exercise.campaigns.Multipriced;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
 
@@ -100,7 +98,7 @@ public class Main {
         System.out.println("Enter the products in the cart separated by comma (ex: A,B,B,C,C,C,C,C,C,C,C,D,E,E,B,B,B)");
 
         String inputCart = sc.nextLine();
-        String[] cart = inputCart.trim().split(",");
+        String[] cart = inputCart.trim().split(","); //A,B,C,D,E,B,B,B,B,C,C,C,C,D
 
         System.out.println("Enter the promotions that are active separated by comma (ex: multipriced:B:2:125,buynget1:C:3,mealdeal:D:E:300) ");
         String inputPromos = sc.nextLine();
@@ -149,6 +147,17 @@ public class Main {
                 case "multipriced":
                     Campaign multipriced = new Multipriced(temp[1], Integer.parseInt(temp[2]), Integer.parseInt(temp[3]));
                     res.put(temp[1], multipriced);
+                    break;
+                case "buynget1":
+                    Campaign buynget1 = new BuyNGet1(temp[1], Integer.parseInt(temp[2]));
+                    res.put(temp[1], buynget1);
+                    break;
+                case "mealdeal":
+
+                    ArrayList<String> skus = new ArrayList<>(Arrays.asList(temp).subList(1, temp.length - 1));
+                    String[] aux = skus.toArray(String[]::new);
+                    Campaign mealdeal = new MealDeal(aux, Integer.parseInt(temp[temp.length - 1]));
+                    res.put(temp[1], mealdeal);
                     break;
                 default:
                     System.out.println("No promotion found.");
