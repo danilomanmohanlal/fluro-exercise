@@ -4,7 +4,7 @@ package com.fluro.exercise;
  * This class represents a promotion campaign for multipriced products,
  * If you buy the defined quantity you have a new discounted price
  */
-public class Multipriced {
+public class Multipriced extends Campaign {
 
     private String sku;
     private int quantity;
