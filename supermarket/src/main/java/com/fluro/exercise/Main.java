@@ -1,7 +1,10 @@
 package com.fluro.exercise;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+import com.fluro.exercise.campaigns.BuyNGet1;
+import com.fluro.exercise.campaigns.Campaign;
+import com.fluro.exercise.campaigns.MealDeal;
+import com.fluro.exercise.campaigns.Multipriced;
+
 import java.util.HashMap;
 import java.util.Map;
 

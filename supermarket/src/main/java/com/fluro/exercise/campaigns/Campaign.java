@@ -1,4 +1,4 @@
-package com.fluro.exercise;
+package com.fluro.exercise.campaigns;
 
 import java.util.Map;
 

@@ -1,4 +1,4 @@
-package com.fluro.exercise;
+package com.fluro.exercise.campaigns;
 
 import java.util.Map;
 
@@ -29,6 +29,12 @@ public class BuyNGet1 extends Campaign {
     }
 
 
+    /**
+     * This method is responsible for checking in the cart if we have enough quantity to apply the promotion that is
+     * one item free. For each multiple of enough quantity we apply the discount
+     * @param cart
+     * @return 0, in this promotion we only remove the free item from the cart
+     */
     @Override
     public int calculateDiscount(Map<String, Integer> cart) {
 

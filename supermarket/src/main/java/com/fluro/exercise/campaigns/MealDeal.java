@@ -1,4 +1,4 @@
-package com.fluro.exercise;
+package com.fluro.exercise.campaigns;
 
 import java.util.Map;
 
@@ -28,7 +28,13 @@ public class MealDeal extends Campaign {
         this.price = price;
     }
 
-
+    /**
+     * This method is responsible for calculating the discount price for a set of items that are in the cart,
+     * after processing the set of items we remove them from the cart. We do this until there are no more sets of items to
+     * remove
+     * @param cart
+     * @return the new discounted price
+     */
     @Override
     public int calculateDiscount(Map<String, Integer> cart) {
 

@@ -1,4 +1,4 @@
-package com.fluro.exercise;
+package com.fluro.exercise.campaigns;
 
 import java.util.Map;
 
@@ -42,6 +42,14 @@ public class Multipriced extends Campaign {
         this.price = price;
     }
 
+    /**
+     * This method checks for the defined quantity for this promotion if its in the cart, if so then we remove it
+     * and add the new price to the result. We continue this process until the product has enough items to be
+     * discounted
+     *
+     * @param cart
+     * @return the new discounted price
+     */
     public int calculateDiscount(Map<String, Integer> cart) {
 
         int res = 0;
