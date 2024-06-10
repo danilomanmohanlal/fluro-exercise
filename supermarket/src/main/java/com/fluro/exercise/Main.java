@@ -13,29 +13,40 @@ public class Main {
         Main m = new Main();
 
         int total = 0;
-        String[] cart = {"A,B,C,D,E"};
+        String[] cart = new String[]{"A","B","C","D","E","B", "B", "B", "B"};
+
+        Map<String, Integer> cartMap = new HashMap<>();
         Map<String, Campaign> activeCampaigns = m.getCampaigns();
         Map<String, Product> products = m.getProducts();
 
-        Map<String, Integer> productsWithCampaign = new HashMap<>();
 
-        // process cart and check for campaigns
-        for(String item: cart) {
+        // map with skus and their quantity
+        for (String item: cart) {
+            cartMap.put(item, cartMap.getOrDefault(item, 0) + 1);
+        }
 
-            //has campaign ?
-            Campaign c = activeCampaigns.get(item);
-            if (c != null) {
-                int aux = productsWithCampaign.get(item) == null ? 0 : productsWithCampaign.get(item);
-                productsWithCampaign.put(item, aux + 1);
-            }
-            else {
-                total += products.get(item).getPrice();
+
+        // loop over active product campaigns
+        for (Map.Entry<String, Campaign> entry : activeCampaigns.entrySet()) {
+            String key = entry.getKey();
+            Campaign value = entry.getValue();
+
+            //check if cart has any of the products in campaign
+            // the cartMap will be updated after processing the discount
+            if (cartMap.containsKey(key)) {
+                total += value.calculateDiscount(cartMap);
             }
         }
-        
+
+        //loop over remaining products to calculate total
+        for (Map.Entry<String, Integer> entry : cartMap.entrySet()) {
+            String key = entry.getKey();
+            Integer value = entry.getValue();
+
+            total += products.get(key).getPrice() * value;
+        }
 
         System.out.println("Total " + total);
-
     }
 
 

@@ -1,5 +1,7 @@
 package com.fluro.exercise;
 
+import java.util.Map;
+
 /**
  * This class represents a promotion campaign for multipriced products,
  * If you buy the defined quantity you have a new discounted price
@@ -40,14 +42,24 @@ public class Multipriced extends Campaign {
         this.price = price;
     }
 
-    public int calculateDiscount(int quantityBought) {
+    public int calculateDiscount(Map<String, Integer> cart) {
 
         int res = 0;
-        while (quantityBought > 0) {
+        int count = cart.get(this.sku);
 
-            quantityBought = quantityBought - this.quantity;
-            if (quantityBought > 0)
-                res += this.price;
+        while (count >= this.quantity) {
+
+            res += this.price;
+            count = count - this.quantity;
+
+            //check if we can remove it from the cart and apply the new price
+            if (count == 0) {
+                cart.remove(this.sku);
+            }
+            else {
+                //update with new count
+                cart.put(this.sku, count);
+            }
         }
 
         return res;
