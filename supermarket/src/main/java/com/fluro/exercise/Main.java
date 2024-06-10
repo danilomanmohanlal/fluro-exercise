@@ -14,8 +14,8 @@ public class Main {
 
         Main m = new Main();
 
-        //m.part1();
-        m.part2();
+        m.part1();
+        //m.part2();
 
     }
 
@@ -55,7 +55,11 @@ public class Main {
             total += products.get(key).getPrice() * value;
         }
 
-        System.out.println("Total " + total);
+        int pounds = total / 100;
+        int pence = total %100;
+
+        String formattedTotal = String.format("Total: %d pounds and %02d pence", pounds, pence);
+        System.out.println(formattedTotal);
     }
 
     private Map<String, Product> getProducts() {
@@ -98,7 +102,7 @@ public class Main {
         System.out.println("Enter the products in the cart separated by comma (ex: A,B,B,C,C,C,C,C,C,C,C,D,E,E,B,B,B)");
 
         String inputCart = sc.nextLine();
-        String[] cart = inputCart.trim().split(","); //A,B,C,D,E,B,B,B,B,C,C,C,C,D
+        String[] cart = inputCart.trim().split(",");
 
         System.out.println("Enter the promotions that are active separated by comma (ex: multipriced:B:2:125,buynget1:C:3,mealdeal:D:E:300) ");
         String inputPromos = sc.nextLine();
@@ -130,8 +134,11 @@ public class Main {
             total += products.get(key).getPrice() * value;
         }
 
-        System.out.println("Total " + total);
+        int pounds = total / 100;
+        int pence = total %100;
 
+        String formattedTotal = String.format("Total: %d pounds and %02d pence", pounds, pence);
+        System.out.println(formattedTotal);
 
     }
 
