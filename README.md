@@ -15,3 +15,13 @@ This will generate a jar with dependencies that you can run in the command line 
 ```
 java -jar supermarket-1.0-SNAPSHOT-jar-with-dependencies.jar
 ```
+
+This will prompt a interactive input to process shopping carts, here is an example:
+```
+Enter the products in the cart separated by comma (ex: A,B,B,C,C,C,C,C,C,C,C,D,E,E,B,B,B)
+>A,B,C,D,E,B,B,B,B,C,C,C,C,D
+Enter the promotions that are active separated by comma (ex: multipriced:B:2:125,buynget1:C:3,mealdeal:D:E:300)
+>multipriced:B:2:125,buynget1:C:3,mealdeal:D:E:300
+Total: 9 pounds and 00 pence
+continue processing carts ? (yes|no)
+```
