@@ -25,3 +25,8 @@ Enter the promotions that are active separated by comma (ex: multipriced:B:2:125
 Total: 9 pounds and 00 pence
 continue processing carts ? (yes|no)
 ```
+
+## Tests
+
+To run the units tests run the following command inside the supermarket folder:
+```mvn test```
