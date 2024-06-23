@@ -40,15 +40,23 @@ public class BuyNGet1 extends Campaign {
 
         int res = 0;
 
+        int toSubtract = 0;
         int count = cart.get(this.sku);
 
-        // we only remove if the quantity of sku bought is greater or equal from the defined value
-        // otherwise we pay normal price
-        if (count >= this.quantity + 1) {
-            int toRemove = count / this.quantity + 1;
+        int numberOfSkuPackFound = 0;
 
-            cart.put(this.sku, count - toRemove);
+        while (count > 0) {
+            numberOfSkuPackFound++;
+
+            if (numberOfSkuPackFound == this.quantity + 1) {
+                numberOfSkuPackFound = 0;
+                toSubtract++;
+            }
+
+            count--;
         }
+
+        cart.put(this.sku, cart.get(this.sku) - toSubtract);
 
         return res;
     }
