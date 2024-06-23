@@ -1,6 +1,7 @@
 package com.fluro.exercise.campaigns;
 
 import java.util.Map;
+import java.util.Objects;
 
 public class BuyNGet1 extends Campaign {
 
@@ -59,5 +60,18 @@ public class BuyNGet1 extends Campaign {
         cart.put(this.sku, cart.get(this.sku) - toSubtract);
 
         return res;
+    }
+
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BuyNGet1 that = (BuyNGet1) o;
+        return quantity == that.quantity &&
+                Objects.equals(sku, that.sku);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(sku, quantity);
     }
 }

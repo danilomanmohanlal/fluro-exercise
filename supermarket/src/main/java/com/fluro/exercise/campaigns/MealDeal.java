@@ -1,6 +1,8 @@
 package com.fluro.exercise.campaigns;
 
+import java.util.Arrays;
 import java.util.Map;
+import java.util.Objects;
 
 public class MealDeal extends Campaign {
 
@@ -62,5 +64,18 @@ public class MealDeal extends Campaign {
         }
 
         return true;
+    }
+
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MealDeal that = (MealDeal) o;
+        return price == that.price &&
+                Arrays.equals(skus, that.skus);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(Arrays.hashCode(skus), price);
     }
 }

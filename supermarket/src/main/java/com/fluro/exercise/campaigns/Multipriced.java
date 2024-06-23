@@ -1,6 +1,7 @@
 package com.fluro.exercise.campaigns;
 
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * This class represents a promotion campaign for multipriced products,
@@ -71,5 +72,19 @@ public class Multipriced extends Campaign {
         }
 
         return res;
+    }
+
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Multipriced that = (Multipriced) o;
+        return quantity == that.quantity &&
+                price == that.price &&
+                Objects.equals(sku, that.sku);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(sku, quantity, price);
     }
 }
