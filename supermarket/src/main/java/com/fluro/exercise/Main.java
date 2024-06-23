@@ -18,7 +18,7 @@ public class Main {
 
     }
 
-    private void part1() {
+    String part1() {
 
         int total = 0;
         String[] cart = new String[]{"A","B","C","D","E","B", "B", "B", "B", "C", "C", "C", "C", "D"};
@@ -59,9 +59,11 @@ public class Main {
 
         String formattedTotal = String.format("Total: %d pounds and %02d pence", pounds, pence);
         System.out.println(formattedTotal);
+
+        return formattedTotal;
     }
 
-    private Map<String, Product> getProducts() {
+    Map<String, Product> getProducts() {
 
         Map<String, Product> res = new HashMap<>();
         Product p1 = new Product("A", 50);
@@ -79,7 +81,7 @@ public class Main {
         return res;
     }
 
-    private Map<String, Campaign> getCampaigns() {
+    Map<String, Campaign> getCampaigns() {
 
         Map<String, Campaign> res = new HashMap<>();
 
@@ -154,7 +156,7 @@ public class Main {
 
     }
 
-    private Map<String, Campaign> parsePromotions(String[] promos) {
+    Map<String, Campaign> parsePromotions(String[] promos) {
 
         Map<String, Campaign> res = new HashMap<>();
 
@@ -187,7 +189,7 @@ public class Main {
         return res;
     }
 
-    private Map<String, Integer> parseCart(String[] cart) {
+    Map<String, Integer> parseCart(String[] cart) {
 
         Map<String, Integer> res = new HashMap<>();
 
